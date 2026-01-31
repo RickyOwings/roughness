@@ -1,0 +1,30 @@
+:root {
+    --bg-0: #ffff;
+    --bg-1: #fecf;
+}
+
+body {
+    margin: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    padding-left: 1rem;
+    background-color: var(--bg-1);
+}
+
+.SurfForm {
+    & div {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }    
+}
+
+#graph, #stats {
+    margin-top: 8px;
+    width: 100%;
+    border-width: 2px;
+    border-style: groove;
+}
+

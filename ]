@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roughness</title>
+    <script type="module" src="./src/index.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Roughness Calculator</h1>
+    </header> 
+    <main>
+        <form class="SurfForm">
+            <fieldset>
+                <legend>Surface Profile</legend>
+                <div>
+                    <label for="profileDataset">Profile Dataset</label>
+                    <select id="profileDataset">
+                        <option value="sinewave">Sine Wave</option>
+                        <option value="trianglewave">Triangle Wave</option>
+                        <option value="squarewave">Square Wave</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="waveCount">Wave Count</label>
+                    <input id="waveCount" type="range" min="0" max="50" value="1" step="0.1">
+                </div>
+                <div>
+                    <label for="amplitude">Amplitude</label>
+                    <input id="amplitude" type="number" min="0" value="1" step="0.1">
+                </div>
+                <div>
+                    <label for="points">Points</label>
+                    <input id="points" type="number" min="1" value="400">
+                </div>
+
+                <div>
+                    <label for="gaussSize">Gauss Size</label>
+                    <input id="gaussSize" type="number" min="1" value="20">
+                </div>
+            </fieldset>
+        </form>
+        <canvas id="graph" width="1200" height="600"></canvas>
+        <div id="stats">
+            
+        </div>
+    </main>
+</body>
+</html>

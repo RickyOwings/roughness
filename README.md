@@ -7,3 +7,5 @@ Install and run:
 npm install
 npm run dev
 ```
+
+Click [here](https://rickyowings.github.io/roughness/) to go to github pages

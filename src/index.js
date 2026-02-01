@@ -1,3 +1,13 @@
+const utils = {
+    /**
+    * @param {number} value 
+    * @param {number} [precision=0] 
+    */
+    round(value, precision = 0) {
+        return Math.round(value * (10 ** precision)) / (10 ** precision);
+    }
+}
+
 const data = {
     get profileDataset() {
         const elem = document.getElementById("profileDataset");
@@ -293,9 +303,9 @@ function renderGraph(canvas) {
         const rq = data.calculateRMS(rProfile);
         const ra = data.calculateRA(rProfile);
         document.getElementById("stats").innerHTML = `
-        Ra: ${ra}<br>
-        Rq: ${rq}<br>
-        Rmax/Ry: ${max - min},
+        Ra: ${utils.round(ra, 4)}<br>
+        Rq: ${utils.round(rq, 4)}<br>
+        Rmax/Ry: ${utils.round(max - min, 4)},
         `;
     };
 }

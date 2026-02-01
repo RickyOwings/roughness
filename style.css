@@ -13,18 +13,32 @@ header {
     background-color: var(--bg-1);
 }
 
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .SurfForm {
+    width: 400px;
     & div {
         display: flex;
-        width: 100%;
         justify-content: space-between;
     }    
 }
 
 #graph, #stats {
     margin-top: 8px;
-    width: 100%;
     border-width: 2px;
     border-style: groove;
+}
+
+#stats {
+    width: 200px;
+    overflow-x: scroll;
+}
+
+#graph {
+    min-width: 100px;
 }
 

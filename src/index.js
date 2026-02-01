@@ -38,6 +38,32 @@ const data = {
         return null;
     },
 
+    get surfaceProfileChk() {
+        const elem = document.getElementById("surfaceProfile");
+        if (elem instanceof HTMLInputElement) {
+            return elem.checked;
+        }
+        return null;
+    },
+
+    get meanLineChk() {
+        const elem = document.getElementById("meanLine");
+        if (elem instanceof HTMLInputElement) {
+            return elem.checked;
+        }
+        return null;
+    },
+
+
+    get distFromMeanChk() {
+        const elem = document.getElementById("distFromMean");
+        if (elem instanceof HTMLInputElement) {
+            return elem.checked;
+        }
+        return null;
+    },
+
+
     waveFns: {
         "sinewave": function() {
             const {waveCount, amplitude, points} = data;
@@ -142,11 +168,11 @@ const data = {
             for(let j = 0; j < kernel.length; j++) {
                 let k = j - kernelSize;
                 if (i + k < 0) {
-                    count += kernel[j];
+                    //count += kernel[j];
                     continue;
                 }
                 if (i + k >= profile.length) {
-                    count += kernel[j];
+                    //count += kernel[j];
                     continue;
                 }
                 sum += profile[i + k] * kernel[j];
@@ -224,7 +250,7 @@ function renderGraph(canvas) {
             return iota;
         }
 
-        {
+        if (data.surfaceProfileChk) {
             ctx.beginPath();
             ctx.moveTo(0, mapping(profile[0]));
             for(let i = 0; i < profile.length; i++) {
@@ -235,10 +261,10 @@ function renderGraph(canvas) {
             ctx.closePath();
         }
 
-        ctx.strokeStyle = "blue";
         const gauss = data.gaussianFilter(profile, gaussSize);
 
-        {
+        if (data.meanLineChk) {
+            ctx.strokeStyle = "blue";
             ctx.beginPath();
             ctx.moveTo(0, mapping(gauss[0]));
             for(let i = 0; i < gauss.length; i++) {
@@ -249,9 +275,9 @@ function renderGraph(canvas) {
             ctx.closePath();
         }
 
-        ctx.strokeStyle = "red";
         const rProfile = data.roughnessProfile(profile, gauss);
-        {
+        if (data.distFromMeanChk) {
+            ctx.strokeStyle = "red";
             ctx.beginPath();
             ctx.moveTo(0, mapping(rProfile[0]));
             for(let i = 0; i < rProfile.length; i++) {
